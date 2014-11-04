@@ -1,0 +1,9 @@
+<h1>ALL the goals</h1>
+
+<% @goals.each do |goal| %>
+  
+  <%= link_to goal.title, goal_url(goal) %>
+  <%= goal.status %>
+  <%= goal.private? %>
+  <br>
+<% end %>

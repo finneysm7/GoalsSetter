@@ -1,0 +1,38 @@
+<% action = (goal.persisted? ? goal_url(goal) : goals_url)%>
+<% method = (goal.persisted? ? 'PATCH' : 'POST') %>
+
+<form action='<%= action%>' method='POST'>
+  <input type='hidden'
+          name='_method'
+          value='<%=method%>'>
+  <input type='hidden'
+          name='authenticity_token'
+          value='<%= form_authenticity_token%>'>
+          
+  <label for="goal_title">Title</label>
+  <input id="goal_title" name='goal[title]' type='text' >
+  
+  <label for='public'>Public</label>
+<!--this should be a radio -->
+    <input name='goal[private?]' type='radio' value="<%= false %>"
+    id='public' <%= "checked" if goal.private? == false %>
+    
+  
+  <label for='private'>Private</label>
+    <input name='goal[private?]' type='radio' value="<%= true %>"
+    id='private' <%= "checked" if goal.private? == true %>>
+    
+  
+  <label for="goal_status">Status</label>
+    <!--this should be a drop down menu -->
+    <select name="goal[status]" id="goal_status">
+    <% Goal::STATUS.reverse.each do |status| %>
+      <option value="<%= status %>"><%= status.upcase %></option>
+    <% end %>
+    </select>
+  
+  <input type="hidden" name="goal[user_id]" value="<%= current_user.id%>">
+  
+  <% submit_val = (goal.persisted? ? "Edit" : "Create New") + " Goal"%>
+  <input type='submit' value='<%= submit_val%>'>
+</form>

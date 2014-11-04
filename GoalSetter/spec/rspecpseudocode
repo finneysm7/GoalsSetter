@@ -1,0 +1,39 @@
+THe goals object
+
+goal
+-id
+-user_id
+-title
+
+users can...
+
+CREATE goals
+  -new
+    -we need a new view
+      -should have a "New Goal"
+      -should have a title
+      -should have a user id
+  -create
+      -should actually update goal
+      
+READ goals
+  -show
+    -we should see the goal 
+    -we should see the title
+    -we should see a back to goals
+    -we should see an edit goal
+    
+  -index
+    -we should see all the goals
+    -we should see an add goal 
+
+UPDATE goals
+  -edit
+    -we should edit title
+  -update
+    -we should update the title
+  
+DELETE goals
+  -delete
+      -it should only show if the current user owns the goal
+      
